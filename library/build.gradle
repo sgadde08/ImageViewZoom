@@ -1,13 +1,12 @@
-
 apply plugin: 'android-library'
-apply plugin: 'signing'
+//apply plugin: 'signing'
 
 group 'it.sephiroth.android.library.imagezoom'
 version '1.0.3'
 
 android {
     compileSdkVersion 19
-    buildToolsVersion "18.1.1"
+    buildToolsVersion "19.0.1"
 
     defaultConfig {
         versionCode 1
@@ -28,7 +27,6 @@ android {
         }
     }
 }
-
 task displayInfo() {
     doLast {
         logger.lifecycle "  project name: ${project.name} (root: ${rootProject.name})"
@@ -101,7 +99,7 @@ task writePom {
         generatePom().writeTo(pomXml)
     }
 }
-
+/*
 uploadArchives {
     repositories {
         mavenDeployer {
@@ -125,7 +123,7 @@ task updateVersion {
     def source = new File("src/it/sephiroth/android/library/imagezoom/ImageViewTouchBase.java")
 
     onlyIf { task ->
-        
+
         def src = project.file(source)
         def text = src.text
 
@@ -156,15 +154,15 @@ task updateVersion {
 
     }
 }
-
+*/
 task sourcesJar(type: Jar) {
     classifier = 'sources'
     from android.sourceSets.main.allSource
 }
 
-signing {
+/*signing {
     sign configurations.archives
-}
+}*/
 
 artifacts {
     archives sourcesJar
@@ -172,9 +170,10 @@ artifacts {
 
 dependencies {
     compile 'it.sephiroth.android.library.easing:library:+'
+    compile 'it.sephiroth.android.library.imagezoom:volley:1.0-SNAPSHOT@aar'
 }
 
 clean.dependsOn(clearJar)
 uploadArchives.dependsOn(build)
 build.dependsOn(writePom, makeJar)
-preBuild.dependsOn(updateVersion)
+//preBuild.dependsOn(updateVersion)

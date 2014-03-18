@@ -125,6 +125,7 @@ public class ImageViewTouch extends ImageViewTouchBase {
 	protected float onDoubleTapPost( float scale, float maxZoom ) {
 		if ( mDoubleTapDirection == 1 ) {
 			if ( ( scale + ( mScaleFactor * 2 ) ) <= maxZoom ) {
+        mDoubleTapDirection = -1;
 				return scale + mScaleFactor;
 			} else {
 				mDoubleTapDirection = -1;
@@ -225,7 +226,8 @@ public class ImageViewTouch extends ImageViewTouchBase {
 				float scale = getScale();
 				float targetScale = scale;
 				targetScale = onDoubleTapPost( scale, getMaxScale() );
-				targetScale = Math.min( getMaxScale(), Math.max( targetScale, getMinScale() ) );
+				targetScale = Math.min( getMaxScale(),
+            Math.max( targetScale, getMinScale() ) );
 				zoomTo( targetScale, e.getX(), e.getY(), DEFAULT_ANIMATION_DURATION );
 				invalidate();
 			}

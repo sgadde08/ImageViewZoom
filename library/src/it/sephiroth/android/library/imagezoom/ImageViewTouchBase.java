@@ -16,13 +16,15 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.ImageView;
 
+import com.android.volley.toolbox.NetworkImageView;
+
 /**
  * Base View to manage image zoom/scrool/pinch operations
  * 
  * @author alessandro
  * 
  */
-public abstract class ImageViewTouchBase extends ImageView implements IDisposable {
+public abstract class ImageViewTouchBase extends NetworkImageView implements IDisposable {
 
 	public static final String VERSION = "1.0.3";
 
@@ -80,7 +82,7 @@ public abstract class ImageViewTouchBase extends ImageView implements IDisposabl
 	private float mMaxZoom = ZOOM_INVALID;
 	private float mMinZoom = ZOOM_INVALID;
 
-	// true when min and max zoom are explicitly defined
+  // true when min and max zoom are explicitly defined
 	private boolean mMaxZoomDefined;
 	private boolean mMinZoomDefined;
 
