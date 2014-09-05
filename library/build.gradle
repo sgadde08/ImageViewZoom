@@ -21,7 +21,7 @@ android {
         targetSdkVersion 19
     }
 }
-
+/**
 def generatePom() {
     def pom = pom{
         project {
@@ -124,3 +124,4 @@ signing {
     required { has("release") && gradle.taskGraph.hasTask("uploadArchives") }
     sign configurations.archives
 }
+**/

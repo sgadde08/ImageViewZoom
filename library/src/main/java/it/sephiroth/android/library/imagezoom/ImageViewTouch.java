@@ -126,6 +126,7 @@ public class ImageViewTouch extends ImageViewTouchBase {
 	protected float onDoubleTapPost(float scale, float maxZoom) {
 		if (mDoubleTapDirection == 1) {
 			if ((scale + (mScaleFactor * 2)) <= maxZoom) {
+                mDoubleTapDirection = -1;
 				return scale + mScaleFactor;
 			}
 			else {
